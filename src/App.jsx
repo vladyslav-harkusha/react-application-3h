@@ -17,13 +17,18 @@ export const App = () => {
     setPosts([...posts, newPost])
   };
 
+  //получаем из дочернего компонента
+  const removePost = (post) => {
+    setPosts(posts.filter(p => p.id !== post.id));
+  }
+
   return (
     <div className="App">
       {/* <Counter /> */}
       {/* <ClassCounter /> */}
 
       <PostForm create={createPost} />
-      <PostList posts={posts} title="Список языков программирования" />
+      <PostList remove={removePost} posts={posts} title="Список языков программирования" />
     </div>
   );
 };

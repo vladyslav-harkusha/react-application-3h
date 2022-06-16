@@ -3,6 +3,11 @@
   color: teal;
   font-size: 14px;
   background: transparent;
-  border: 1px solid teal;
+  border: 1px solid darkgreen;
   cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.myBtn:hover {
+  background-color: rgba(0, 131, 131, 0.247);
 }
