@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 // import { Counter } from "./components/Counter";
 // import { ClassCounter } from "./components/ClassCounter";
 import { PostList } from './components/PostLIst';
@@ -13,12 +13,16 @@ export const App = () => {
     { id: 3, title: 'PHP', body: 'Description' },
     { id: 4, title: 'Cotlin', body: 'Description' },
   ]);
-  const [title, setTitle] = useState('');
+  const [post, setPost] = useState({title: '', body: ''});
+
+  // const bodyInputRef = useRef();
 
   const addNewPost = (event) => {
     event.preventDefault();
-    console.log(title);
-  }
+
+    setPosts([...posts, {...post, id: Date.now()}]);
+    setPost({title: '', body: ''})
+  };
 
   return (
     <div className="App">
@@ -28,10 +32,18 @@ export const App = () => {
         <MyInput
           type="text"
           placeholder="Название поста"
-          value={title}
-          onChange={event => setTitle(event.target.value)}
+          value={post.title}
+          onChange={event => setPost({...post, title: event.target.value})}
         />
-        <MyInput type="text" placeholder="Описание поста"/>
+
+        <MyInput 
+          type="text"
+          placeholder="Описание поста"
+          value={post.body}
+          onChange={event => setPost({ ...post, body: event.target.value })}
+          // ref={bodyInputRef}
+        />
+
         <MyButton onClick={addNewPost}>Создать пост</MyButton>
       </form>
 
