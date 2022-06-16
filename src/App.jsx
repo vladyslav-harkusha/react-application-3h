@@ -28,7 +28,13 @@ export const App = () => {
       {/* <ClassCounter /> */}
 
       <PostForm create={createPost} />
-      <PostList remove={removePost} posts={posts} title="Список языков программирования" />
+
+      {posts.length !== 0
+        ? <PostList remove={removePost} posts={posts} title="Список языков программирования" />
+        : <h2 style={{color: "orange", textAlign: "center"}}>
+            Посты не найдены!
+          </h2>
+      }
     </div>
   );
 };
