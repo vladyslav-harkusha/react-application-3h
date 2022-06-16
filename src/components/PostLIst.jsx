@@ -4,7 +4,7 @@ import { PostItem } from './PostItem';
 export const PostList = ({ posts, title, remove }) => {
   return (
     <div>
-      <h1 style={{ textAlign: 'center', color: 'red' }}>
+      <h1 style={{ textAlign: 'center', color: 'yellowgreen' }}>
         {title}
       </h1>
       {posts.map((post, index) =>

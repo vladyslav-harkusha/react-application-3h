@@ -1,4 +1,5 @@
 import { MyButton } from "./UI/button/MyButton";
+import '../styles/PostItem.css';
 
 export const PostItem = (props) => {
 

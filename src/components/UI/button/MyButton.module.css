@@ -2,12 +2,12 @@
   padding: 5px 20px;
   color: teal;
   font-size: 14px;
-  background: transparent;
+  background-color: rgba(0, 131, 131, 0.13);
   border: 1px solid darkgreen;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .myBtn:hover {
-  background-color: rgba(0, 131, 131, 0.247);
+  background-color: rgba(0, 131, 131, 0.288);
 }
