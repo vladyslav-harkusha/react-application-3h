@@ -1,12 +1,7 @@
-import { useState } from 'react';
-
 import { MySelect } from "./UI/select/MySelect";
 import { MyInput } from './UI/input/MyInput';
 
 export const PostFilter = ({filter, setFilter}) => {
-  const [selectedSort, setSelectedSort] = useState('');
-  const [searchQuery, setSearchQuary] = useState('');
-
   return (
     <div>
       <MyInput
