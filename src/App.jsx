@@ -7,7 +7,7 @@ import './styles/App.css';
 
 export const App = () => {
   const [posts, setPosts] = useState([
-    { id: 1, title: 'JavaScript', body: 'Восхитительный' },
+    { id: 1, title: 'JavaScript', body: 'Восхитительный!' },
     { id: 2, title: 'Pyton', body: 'Отличный' },
     { id: 3, title: 'PHP', body: 'Замечательый' },
     { id: 4, title: 'Cotlin', body: 'Суперский' },
