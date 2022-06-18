@@ -2,8 +2,10 @@ import { useState, useMemo } from 'react';
 import { PostList } from './components/PostLIst';
 import { PostForm } from './components/PostForm';
 import { PostFilter } from './components/PostFilter';
+import { MyModal } from './components/UI/modal/MyModal';
 
 import './styles/App.css';
+import { MyButton } from './components/UI/button/MyButton';
 
 export const App = () => {
   const [posts, setPosts] = useState([
@@ -13,6 +15,7 @@ export const App = () => {
     { id: 4, title: 'Cotlin', body: 'Суперский' },
   ]);
   const [filter, setFilter] = useState({sort: '', query: ''});
+  const [modal, setModal] = useState(false);
 
   const sortedPosts = useMemo(() => {
     console.log('ОТРАБОТАЛА ФУНКЦИЯ getSortedPosts');
@@ -28,7 +31,8 @@ export const App = () => {
   }, [filter.query, sortedPosts])
 
   const createPost = (newPost) => {
-    setPosts([...posts, newPost])
+    setPosts([...posts, newPost]);
+    setModal(false);
   };
 
   //получаем из дочернего компонента
@@ -38,7 +42,13 @@ export const App = () => {
 
   return (
     <div className="App">
-      <PostForm create={createPost} />
+      <MyButton style={{marginTop: "20px"}} onClick={() => setModal(true)}>
+        Создать пользователя
+      </MyButton>
+
+      <MyModal visible={modal} setVisible={setModal}>
+        <PostForm create={createPost} />
+      </MyModal>
 
       <hr style={{margin: "15px 0", height: "6px", backgroundColor: "darkgreen"}} />
 
