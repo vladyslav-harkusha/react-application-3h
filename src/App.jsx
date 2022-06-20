@@ -6,17 +6,18 @@ import { MyModal } from './components/UI/modal/MyModal';
 import './styles/App.css';
 import { MyButton } from './components/UI/button/MyButton';
 import { usePosts } from './hooks/usePosts';
+import axios from 'axios';
 
 export const App = () => {
-  const [posts, setPosts] = useState([
-    { id: 1, title: 'JavaScript', body: 'Восхитительный!' },
-    { id: 2, title: 'Pyton', body: 'Отличный' },
-    { id: 3, title: 'PHP', body: 'Замечательый' },
-    { id: 4, title: 'Cotlin', body: 'Суперский' },
-  ]);
+  const [posts, setPosts] = useState([]);
   const [filter, setFilter] = useState({sort: '', query: ''});
   const [modal, setModal] = useState(false);
   const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query)
+
+  async function fetchPosts() {
+    const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+    setPosts(response.data);
+  }
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
@@ -30,6 +31,10 @@ export const App = () => {
 
   return (
     <div className="App">
+      <MyButton onClick={fetchPosts}>
+        GET POSTS
+      </MyButton>
+
       <MyButton style={{marginTop: "20px"}} onClick={() => setModal(true)}>
         Создать пост
       </MyButton>
@@ -42,7 +47,7 @@ export const App = () => {
 
       <PostFilter filter={filter} setFilter={setFilter} />
 
-      <PostList remove={removePost} posts={sortedAndSearchedPosts} title="Список языков программирования" />
+      <PostList remove={removePost} posts={sortedAndSearchedPosts} title="Список постов" />
     </div>
   );
 };
