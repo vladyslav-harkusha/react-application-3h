@@ -1,0 +1,22 @@
+.pages__wrapper {
+  display: flex;
+  gap: 3px;
+  margin-top: 20px;
+}
+
+.pages {
+  padding: 10px;
+  border: 1px solid teal;
+  cursor: pointer;
+  background-color: rgba(0, 131, 131, 0.13);
+}
+
+.pages:hover {
+  background-color: rgba(0, 131, 131, 0.288);
+}
+
+.pages__current {
+  border: 2px solid rgb(0, 117, 88);
+  font-weight: bold;
+  background-color: rgba(0, 131, 131, 0.288);
+}
