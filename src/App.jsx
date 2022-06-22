@@ -9,8 +9,9 @@ import { usePosts } from './hooks/usePosts';
 import PostService from './API/PostsService';
 import { Loader } from './components/UI/Loader/Loader';
 import { useFetching } from './hooks/useFetching';
-import { getPageCount, getPagesArray } from './utils/pages';
+import { getPageCount } from './utils/pages';
 import { Pagination } from './components/UI/pagination/Pagination';
+import { MySelect } from './components/UI/select/MySelect';
 
 export const App = () => {
   const [posts, setPosts] = useState([]);
@@ -29,7 +30,8 @@ export const App = () => {
 
   useEffect(() => {
     fetchPosts();
-  }, [page]);
+    // eslint-disable-next-line
+  }, [page, limit]);
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
@@ -44,6 +46,8 @@ export const App = () => {
   const changePage = (page) => {
     setPage(page);
   };
+
+  console.log(limit);
 
   return (
     <div className="App">
@@ -75,6 +79,17 @@ export const App = () => {
           </div> 
         : <PostList remove={removePost} posts={sortedAndSearchedPosts} title="Список постов" />
       }
+
+      <MySelect
+        value={limit}
+        onChange={limit => setLimit(limit)}
+        defaultValue="Постов на странице"
+        options={[
+          { value: 5, name: '5' },
+          { value: 10, name: '10' },
+          { value: 20, name: '20' },
+        ]}
+      />
 
       <Pagination page={page} changePage={changePage} totalPages={totalPages} />
     </div>

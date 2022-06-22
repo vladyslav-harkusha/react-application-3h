@@ -3,7 +3,11 @@ import { useMemo } from 'react';
 
 export const useSortedPosts = (posts, sort) => {
   const sortedPosts = useMemo(() => {
-    if (sort) {
+    if (sort === 'id') {
+      return [...posts].sort((post1, post2) => post1[sort] - post2[sort])
+    }
+
+    if (sort && sort !== 'id') {
       return [...posts].sort((post1, post2) => post1[sort].localeCompare(post2[sort]))
     }
 
