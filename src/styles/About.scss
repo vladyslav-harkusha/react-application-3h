@@ -1,0 +1,17 @@
+.about {
+  background-color: wheat;
+  width: 100%;
+  height: 270px;;
+
+  &__title {
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
+    background-color: rgb(82, 126, 111);
+    color: cornflowerblue;
+    font-style: italic;
+    margin-top: 20px;
+    border-radius: 50%;
+    padding: 40px;
+  }
+}
