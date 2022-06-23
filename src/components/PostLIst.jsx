@@ -15,7 +15,7 @@ export const PostList = ({ posts, title, remove }) => {
   };
 
   return (
-    <div>
+    <div className="posts-list">
       <h1 style={{ textAlign: 'center', color: 'yellowgreen' }}>
         {title}
       </h1>
