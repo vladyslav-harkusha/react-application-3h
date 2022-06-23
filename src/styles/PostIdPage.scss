@@ -25,5 +25,24 @@
     font-style: italic;
     text-align: center;
     color: green;
+    margin-bottom: 20px;
+  }
+
+  &__comments {
+    padding: 0 40px;
+  }
+
+  &__comment {
+    margin-bottom: 20px;
+  }
+
+  &__comment-email {
+    margin-bottom: 5px;
+    font-style: italic;
+  }
+
+  &__comment-body {
+    font-style: italic;
+    color: darkgray;
   }
 }
