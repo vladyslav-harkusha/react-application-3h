@@ -1,0 +1,29 @@
+.post-page {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+  &__h1 {
+    text-align: center;
+    margin: 20px 0 30px;
+  }
+
+  &__wpapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: teal;
+    text-decoration: underline;
+  }
+
+  &__body {
+    font-style: italic;
+    text-align: center;
+    color: green;
+  }
+}

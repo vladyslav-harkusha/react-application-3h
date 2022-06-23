@@ -16,4 +16,9 @@
   &__text {
     font-style: italic;
   }
+
+  &__btns {
+    display: flex;
+    margin-left: 10px;
+  }
 }

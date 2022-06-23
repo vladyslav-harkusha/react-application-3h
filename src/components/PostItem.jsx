@@ -1,7 +1,9 @@
 import { MyButton } from "./UI/button/MyButton";
+import { useNavigate } from "react-router-dom";
 import '../styles/PostItem.scss';
 
 export const PostItem = (props) => {
+  const navigate = useNavigate();
 
   return (
     <div className="post">
@@ -11,6 +13,10 @@ export const PostItem = (props) => {
       </div>
 
       <div className="post__btns">
+        <MyButton onClick={() => navigate(`/posts/${props.post.id}`)}>
+          Открыть
+        </MyButton>
+
         <MyButton onClick={() => props.remove(props.post)}>
           Удалить
         </MyButton>
