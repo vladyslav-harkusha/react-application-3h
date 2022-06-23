@@ -7,27 +7,9 @@
 #root {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .App {
   max-width: 800px;
   margin: 0 auto;
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  height: 50px;
-  width: 100%;
-  background-color: beige;
-  padding: 0 15px;
-
-  &__links {
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
-    align-items: center;
-    width: 100%;
-  }
 }

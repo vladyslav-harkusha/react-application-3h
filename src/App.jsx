@@ -1,17 +1,13 @@
 import './styles/App.scss';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { About } from './pages/About';
 import { Posts } from './pages/Posts';
+import { Navbar } from './components/UI/Navbar/Navbar';
 
 export const App = () => {
   return (
     <BrowserRouter>
-      <div className="navbar">
-        <ul className="navbar__links">
-          <a href="/about">About this App</a>
-          <a href="/posts">Posts</a>
-        </ul>
-      </div>
+      <Navbar />
 
       <Routes>
         <Route path="/about" element={<About />} />

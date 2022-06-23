@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 100%;
+  background-color: lightcyan;
+  padding: 0 15px;
+  border-bottom: 2px solid green;
+
+  &__links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+  }
+}
