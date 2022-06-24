@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PostService from "../API/PostsService";
+import { CommentsList } from "../components/CommentsList";
 import { Loader } from "../components/UI/Loader/Loader";
 import { useFetching } from "../hooks/useFetching";
 import "../styles/PostIdPage.scss";
@@ -41,14 +42,7 @@ export const PostIdPage = () => {
 
       {isComLoading
         ? <Loader />
-        : <ul className="post-page__comments">
-            {comments.map(comment =>
-              <li className="post-page__comment">
-                <h4 className="post-page__comment-email">{comment.email}</h4>
-                <p className="post-page__comment-body">{comment.body}</p>
-              </li>
-            )}
-          </ul>
+        : <CommentsList comments={comments} />
       }
     </div>
   )

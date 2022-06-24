@@ -16,6 +16,7 @@ export const App = () => {
         <Route path="/posts" element={<Posts />} />
         <Route path="/posts/:id" element={<PostIdPage />} />
         <Route path="/error" element={<Error />} />
+        <Route path="/" element={<Navigate to="/posts" replace />} />
         <Route path="/*" element={<Navigate to="/error" replace />} />
       </Routes>
     </BrowserRouter>
