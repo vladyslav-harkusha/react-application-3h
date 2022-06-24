@@ -1,7 +1,7 @@
 import './styles/App.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/UI/Navbar/Navbar';
-import { routes } from './router';
+import { privateRoutes, publicRoutes } from './router';
 
 export const App = () => {
   return (
@@ -9,7 +9,15 @@ export const App = () => {
       <Navbar />
 
       <Routes>
-        {routes.map((route, index) => 
+        {privateRoutes.map((route, index) => 
+          <Route 
+            key={index} 
+            path={route.path} 
+            element={route.element} 
+          />
+        )}
+
+        {publicRoutes.map((route, index) => 
           <Route 
             key={index} 
             path={route.path} 
