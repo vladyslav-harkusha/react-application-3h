@@ -7,6 +7,7 @@ export const Navbar = () => {
       <ul className="navbar__links">
         <Link to="/about">About this App</Link>
         <Link to="/posts">Posts</Link>
+        <Link to="/login">Log in</Link>
       </ul>
     </div>
   )

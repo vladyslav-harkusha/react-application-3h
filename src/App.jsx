@@ -4,27 +4,39 @@ import { Navbar } from './components/UI/Navbar/Navbar';
 import { privateRoutes, publicRoutes } from './router';
 
 export const App = () => {
+  const isAuthorized = true;
+
   return (
-    <BrowserRouter>
-      <Navbar />
+    isAuthorized
+      ? 
+      <BrowserRouter>
+        <Navbar />
 
-      <Routes>
-        {privateRoutes.map((route, index) => 
-          <Route 
-            key={index} 
-            path={route.path} 
-            element={route.element} 
-          />
-        )}
+        <Routes>
+          {privateRoutes.map((route, index) =>
+            <Route
+              key={index}
+              path={route.path}
+              element={route.element}
+            />
+          )}
+        </Routes>
+      </BrowserRouter>
+      
+      : 
+      <BrowserRouter>
+        <Navbar />
 
-        {publicRoutes.map((route, index) => 
-          <Route 
-            key={index} 
-            path={route.path} 
-            element={route.element} 
-          />
-        )}
-      </Routes>
-    </BrowserRouter>
+        <Routes>
+          {publicRoutes.map((route, index) =>
+            <Route
+              key={index}
+              path={route.path}
+              element={route.element}
+            />
+          )}
+        </Routes>
+      </BrowserRouter>
+
   );
 };
