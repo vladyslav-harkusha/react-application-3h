@@ -10,7 +10,7 @@ export const privateRoutes = [
   { path: "/posts", element: <Posts /> },
   { path: "/posts/:id", element: <PostIdPage /> },
   { path: "/errorr", element: <Errorr /> },
-  { path: "/login", element: <Login /> },
+  { path: "/login", element: <Navigate to="/posts" replace /> },
   { path: "/", element: <Navigate to="/posts" replace /> },
   { path: "/*", element: <Navigate to = "/errorr" replace /> },
 ];

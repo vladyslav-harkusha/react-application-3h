@@ -1,42 +1,31 @@
-import './styles/App.scss';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { AuthorizedContext } from './context';
 import { Navbar } from './components/UI/Navbar/Navbar';
-import { privateRoutes, publicRoutes } from './router';
+import { AppRouter } from './components/AppRouter';
+import './styles/App.scss';
 
 export const App = () => {
-  const isAuthorized = true;
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (localStorage.getItem('auth')) {
+      setIsAuthorized(true);
+    }
+    setIsLoading(false);
+  }, [])
 
   return (
-    isAuthorized
-      ? 
+    <AuthorizedContext.Provider value={{
+      isAuthorized,
+      setIsAuthorized,
+      isLoading, 
+    }}>
       <BrowserRouter>
         <Navbar />
-
-        <Routes>
-          {privateRoutes.map((route, index) =>
-            <Route
-              key={index}
-              path={route.path}
-              element={route.element}
-            />
-          )}
-        </Routes>
+        <AppRouter />
       </BrowserRouter>
-      
-      : 
-      <BrowserRouter>
-        <Navbar />
-
-        <Routes>
-          {publicRoutes.map((route, index) =>
-            <Route
-              key={index}
-              path={route.path}
-              element={route.element}
-            />
-          )}
-        </Routes>
-      </BrowserRouter>
-
+    </AuthorizedContext.Provider>
   );
 };
