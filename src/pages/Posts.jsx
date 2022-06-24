@@ -46,8 +46,6 @@ export const Posts = () => {
     setPage(page);
   };
 
-  console.log(limit);
-
   return (
     <div className="App">
       <MyButton onClick={fetchPosts}>
