@@ -22,8 +22,17 @@ export const Navbar = () => {
       }
 
       <ul className="navbar__links">
-        <Link to="/about">About this App</Link>
-        <Link to="/posts">Posts</Link>
+        <li className="navbar__link">
+          <Link to="/about">About this App</Link>
+        </li>
+
+        <li className="navbar__link">
+          <Link to="/posts">Posts</Link>
+        </li>
+
+        <li className="navbar__link">
+          <Link to="/posts_infinity_scroll">Posts (infinity scroll)</Link>
+        </li>
       </ul>
     </div>
   )
