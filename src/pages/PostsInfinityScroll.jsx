@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { PostList } from '../components/PostList'
 import { PostForm } from '../components/PostForm';
 import { PostFilter } from '../components/PostFilter';
@@ -10,7 +10,7 @@ import { Loader } from '../components/UI/Loader/Loader';
 import { useFetching } from '../hooks/useFetching';
 import { getPageCount } from '../utils/pages';
 import { Pagination } from '../components/UI/pagination/Pagination';
-import { MySelect } from '../components/UI/select/MySelect';
+import { useObserver } from '../hooks/useObserver';
 
 export const PostsInfinityScroll = () => {
   const [posts, setPosts] = useState([]);
@@ -20,17 +20,24 @@ export const PostsInfinityScroll = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
+
+  const lastElement = useRef();
+
   const [fetchPosts, isPostsLoading, postError] = useFetching(async () => {
     const response = await PostService.getAll(limit, page);
-    setPosts(response.data);
+    setPosts([...posts, ...response.data]);
     const totalCount = response.headers['x-total-count'];
     setTotalPages(getPageCount(totalCount, limit));
+  });
+
+  useObserver(lastElement, page < totalPages, isPostsLoading, () => {
+    setPage(page + 1);
   });
 
   useEffect(() => {
     fetchPosts();
     // eslint-disable-next-line
-  }, [page, limit]);
+  }, [page]);
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
@@ -70,25 +77,20 @@ export const PostsInfinityScroll = () => {
         </h2>
       }
 
-      {isPostsLoading
-        ? <div style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
-          <Loader />
+      <PostList remove={removePost} posts={sortedAndSearchedPosts} title="Список постов" />
+      
+      <div 
+        style={{heigth: "20px", background: "plum"}}
+        ref={lastElement}
+      >
+        Last element
+      </div>
+
+      {isPostsLoading &&
+        <div style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
+            <Loader />
         </div>
-        : <PostList remove={removePost} posts={sortedAndSearchedPosts} title="Список постов" />
       }
-
-      <MySelect
-        value={limit}
-        onChange={limit => setLimit(limit)}
-        defaultValue="Постов на странице"
-        options={[
-          { value: 5, name: '5' },
-          { value: 10, name: '10' },
-          { value: 20, name: '20' },
-        ]}
-      />
-
-      <Pagination page={page} changePage={changePage} totalPages={totalPages} />
     </div>
   );
 };

@@ -23,11 +23,11 @@ export const Navbar = () => {
 
       <ul className="navbar__links">
         <li className="navbar__link">
-          <Link to="/about">About this App</Link>
+          <Link to="/about">About</Link>
         </li>
 
         <li className="navbar__link">
-          <Link to="/posts">Posts</Link>
+          <Link to="/posts">Posts (with pagination)</Link>
         </li>
 
         <li className="navbar__link">
