@@ -13,7 +13,7 @@ export const PostItem = (props) => {
       </div>
 
       <div className="post__btns">
-        <MyButton onClick={() => navigate(`/posts/${props.post.id}`)}>
+        <MyButton onClick={() => navigate(`/react-application-3h/posts/${props.post.id}`)}>
           Открыть
         </MyButton>
 
